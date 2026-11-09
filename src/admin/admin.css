@@ -8,9 +8,9 @@
 .adm button,.adm input,.adm select,.adm textarea,.adm-login input,.adm-login button,.adm-overlay button,.adm-overlay input,.adm-overlay select,.adm-overlay textarea{font-family:inherit}
 
 /* ---------- Login ---------- */
-.adm-login{min-height:100svh;display:grid;place-items:center;padding:20px;
+.adm-login{position:relative;overflow:hidden;min-height:100svh;display:grid;place-items:center;padding:20px;
   background:radial-gradient(700px 500px at 80% 0,rgba(79,134,247,.45),transparent 60%),linear-gradient(135deg,#0a1226,#162a55)}
-.adm-login-card{width:min(400px,100%);background:#fff;border-radius:24px;padding:34px;display:grid;gap:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.adm-login-card{position:relative;z-index:1;width:min(400px,100%);background:#fff;border-radius:24px;padding:34px;display:grid;gap:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
 .adm-login-card h1{font-size:1.6rem;text-align:center}
 .adm-login-card h1 b{color:var(--a-blue)}
 .adm-login-card>p{text-align:center;color:var(--a-muted);margin:-8px 0 6px;font-size:.9rem}
@@ -200,3 +200,25 @@
 .dp-foot .dp-ok{background:#4f86f7;color:#fff;padding:.5rem 1.2rem;border-radius:999px}
 .dp-foot .dp-ok:hover{background:#3b6fe0}
 .adm-badge::first-letter{text-transform:uppercase}
+
+/* Fondo del login: patrón de íconos de electrodomésticos que se desplaza muy despacio */
+.adm-login::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:url('/assets/patron-electro.svg') 0 0/420px 420px;
+  mask-image:radial-gradient(ellipse 80% 75% at 50% 50%,#000 35%,rgba(0,0,0,.45) 100%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 50%,#000 35%,rgba(0,0,0,.45) 100%);
+  animation:adm-drift 120s linear infinite}
+@keyframes adm-drift{to{background-position:420px 420px}}
+
+/* Login: tarjeta de vidrio (translúcida con desenfoque) para que se vea el patrón detrás */
+.adm-login-card{background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid rgba(255,255,255,.24);box-shadow:0 30px 80px -20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.28);color:#fff}
+.adm-login-card h1{color:#fff}
+.adm-login-card h1 b{color:#8fb2ff}
+.adm-login-card>p{color:#c9d6f2}
+.adm-login-card code{background:rgba(255,255,255,.16);color:#fff}
+.adm-login-card .adm-field{color:#d6e2fb}
+.adm-login-card .adm-field input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.26);color:#fff;caret-color:#fff}
+.adm-login-card .adm-field input::placeholder{color:rgba(255,255,255,.5)}
+.adm-login-card .adm-field input:focus{background:rgba(255,255,255,.15);border-color:#8fb2ff;box-shadow:0 0 0 4px rgba(143,178,255,.25)}
+.adm-login-card .adm-field input:-webkit-autofill{-webkit-text-fill-color:#fff;-webkit-box-shadow:0 0 0 100px rgba(35,58,110,.95) inset;transition:background-color 9999s}
+.adm-login-card .adm-error{color:#ffc2c2;background:rgba(214,69,69,.2);padding:.55rem .8rem;border-radius:12px;text-align:center}
