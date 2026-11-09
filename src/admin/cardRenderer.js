@@ -71,7 +71,7 @@ function drawFront(ctx, { pattern }) {
   p.setTransform(new DOMMatrix().scale(1.45));
   ctx.fillStyle = p; ctx.fillRect(0, 0, W, H);
   const fade = ctx.createLinearGradient(0, 0, W * 0.72, 0);
-  fade.addColorStop(0, "rgba(10,18,38,.92)"); fade.addColorStop(0.7, "rgba(10,18,38,.7)"); fade.addColorStop(1, "rgba(10,18,38,0)");
+  fade.addColorStop(0, "rgba(10,18,38,.88)"); fade.addColorStop(0.7, "rgba(10,18,38,.6)"); fade.addColorStop(1, "rgba(10,18,38,0)");
   ctx.fillStyle = fade; ctx.fillRect(0, 0, W, H);
 
   // Costura punteada
@@ -80,25 +80,36 @@ function drawFront(ctx, { pattern }) {
   ctx.beginPath(); ctx.roundRect(48, 48, W - 96, H - 96, 58); ctx.stroke();
   ctx.restore();
 
-  // Perforación de la etiqueta
-  const hx = 150, hy = 150;
-  const hole = ctx.createRadialGradient(hx, hy - 10, 6, hx, hy, 62);
-  hole.addColorStop(0, "#02050c"); hole.addColorStop(1, "#0b1530");
-  ctx.fillStyle = hole; ctx.beginPath(); ctx.arc(hx, hy, 60, 0, Math.PI * 2); ctx.fill();
-  ctx.lineWidth = 7; ctx.strokeStyle = "rgba(255,255,255,.6)"; ctx.stroke();
-  ctx.lineWidth = 3; ctx.strokeStyle = "rgba(143,178,255,.5)";
-  ctx.beginPath(); ctx.arc(hx, hy, 80, 0, Math.PI * 2); ctx.stroke();
-
   // Marca
   ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
-  ctx.fillStyle = "#fff"; ctx.font = `700 290px ${FONT}`;
-  ctx.fillText("IERO", 140, 640);
-  ctx.fillStyle = "#8fb2ff"; ctx.font = `500 90px ${FONT}`;
-  spaced(ctx, "SERVICE", 152, 765, 36);
+  ctx.fillStyle = "#fff"; ctx.font = `700 380px ${FONT}`;
+  ctx.fillText("IERO", 128, 481);
+  const ieroW = ctx.measureText("IERO").width;
+  ctx.fillStyle = "#8fb2ff"; ctx.font = `500 88px ${FONT}`;
+  const sw = [..."SERVICE"].reduce((a, c) => a + ctx.measureText(c).width, 0);
+  spaced(ctx, "SERVICE", 140, 616, (ieroW - 30 - sw) / 6);
 
-  ctx.fillStyle = BLUE; ctx.beginPath(); ctx.roundRect(152, 812, 150, 11, 6); ctx.fill();
-  ctx.fillStyle = LIGHT; ctx.font = `400 48px ${FONT}`;
-  ctx.fillText("Reparación de electrodomésticos", 152, 905);
+  ctx.fillStyle = BLUE; ctx.beginPath(); ctx.roundRect(140, 666, 170, 12, 6); ctx.fill();
+  ctx.fillStyle = LIGHT; ctx.font = `400 52px ${FONT}`;
+  ctx.fillText("Reparación de electrodomésticos", 140, 773);
+
+  // Panel de vidrio con los rubros
+  const px = 1150, py = 215, pw = 520, ph = 570;
+  ctx.fillStyle = "rgba(255,255,255,.08)"; ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 50); ctx.fill();
+  ctx.lineWidth = 3; ctx.strokeStyle = "rgba(255,255,255,.22)"; ctx.stroke();
+  ctx.fillStyle = "#fff"; ctx.font = `600 34px ${FONT}`;
+  spaced(ctx, "REPARAMOS", px + 60, py + 85, 12);
+  ctx.fillStyle = BLUE; ctx.fillRect(px + 60, py + 112, 90, 6);
+  ["Heladeras", "Lavarropas", "Microondas", "Hornos", "Y mucho más"].forEach((t, i) => {
+    const y = py + 190 + i * 80, more = i === 4;
+    ctx.fillStyle = more ? "rgba(143,178,255,.25)" : "rgba(79,134,247,.35)"; ctx.beginPath(); ctx.arc(px + 80, y - 14, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = "#fff"; ctx.lineWidth = 6; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath();
+    if (more) { ctx.moveTo(px + 68, y - 14); ctx.lineTo(px + 92, y - 14); ctx.moveTo(px + 80, y - 26); ctx.lineTo(px + 80, y - 2); }
+    else { ctx.moveTo(px + 69, y - 14); ctx.lineTo(px + 77, y - 5); ctx.lineTo(px + 92, y - 24); }
+    ctx.stroke();
+    ctx.fillStyle = "#fff"; ctx.font = `500 44px ${FONT}`; ctx.fillText(t, px + 130, y);
+  });
 }
 
 /* ---------- DORSO ---------- */
@@ -144,10 +155,8 @@ async function drawBack(ctx, { url }) {
   // Teléfono con ícono de WhatsApp
   ctx.fillStyle = "#25d366"; ctx.beginPath(); ctx.arc(190, 790, 58, 0, Math.PI * 2); ctx.fill();
   ctx.save(); ctx.translate(190 - 30, 790 - 30); ctx.scale(60 / 24, 60 / 24); ctx.fillStyle = "#fff"; ctx.fill(new Path2D(WA_PATH)); ctx.restore();
-  ctx.fillStyle = "#5b6478"; ctx.font = `400 34px ${FONT}`;
-  ctx.fillText("WhatsApp · Llamadas", 280, 752);
   ctx.fillStyle = NAVY; ctx.font = `700 80px ${FONT}`;
-  ctx.fillText(fmtPhone(TECH.phone), 278, 826);
+  ctx.fillText(fmtPhone(TECH.phone), 278, 818);
 
   // Sello "20+ años" pegado sobre el borde del panel
   const sx = px + 6, sy = py + 20;

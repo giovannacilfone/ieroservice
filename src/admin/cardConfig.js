@@ -2,7 +2,7 @@
 export const TECH = {
   name: ["Roberto", "Ieronimo"],
   role: "Técnico en electrodomésticos",
-  phone: "1149854870",
+  phone: "1140854870",
   years: 20,
 };
 

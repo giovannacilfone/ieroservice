@@ -25,7 +25,6 @@ export default function Card() {
   const assets = useRef(null);
 
   const valid = /^https?:\/\/\S+$/i.test(url.trim());
-  const isLocal = /localhost|127\.0\.0\.1/.test(url);
 
   // Redibuja las dos caras cuando cambia el link (con una pausa mientras se escribe)
   useEffect(() => {
@@ -80,9 +79,6 @@ export default function Card() {
           <input value={url} onChange={e => onUrl(e.target.value)} placeholder="https://tusitio.com" inputMode="url" />
         </label>
         {!valid && <p className="adm-error">Escribí un link que empiece con https://</p>}
-        {valid && isLocal && (
-          <p className="adm-hint warn">Estás viendo el panel desde tu computadora: ese QR llevaría a <b>localhost</b>. Abrí el panel desde la dirección publicada, o escribí acá el link del sitio.</p>
-        )}
         <p className="adm-hint">
           {TECH.name.join(" ")} · {fmtPhone(TECH.phone)} · Tamaño 90 × 50 mm ({W} × {H} px, listo para imprenta).
         </p>
