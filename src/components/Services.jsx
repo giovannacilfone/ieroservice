@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { APPLIANCES, waLink } from "../config.js";
 import { reveal } from "../reveal.js";
 
+// true en celular / pantallas táctiles: ahí las tarjetas quedan estáticas (sin tilt, sin hover, sin entrada animada)
+function useStill() {
+  const q = "(max-width: 760px), (hover: none)";
+  const [still, setStill] = useState(() => window.matchMedia(q).matches);
+  useEffect(() => {
+    const m = window.matchMedia(q);
+    const on = () => setStill(m.matches);
+    m.addEventListener("change", on);
+    return () => m.removeEventListener("change", on);
+  }, []);
+  return still;
+}
+
 function Card({ a, i }) {
+  const still = useStill();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 200, damping: 20 });
@@ -20,12 +35,12 @@ function Card({ a, i }) {
   return (
     <motion.article
       className="card"
-      style={{ rotateX, rotateY }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      whileHover={{ y: -6 }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      style={still ? undefined : { rotateX, rotateY }}
+      onMouseMove={still ? undefined : onMove}
+      onMouseLeave={still ? undefined : onLeave}
+      whileHover={still ? undefined : { y: -6 }}
+      initial={still ? false : { opacity: 0, y: 40 }}
+      whileInView={still ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}
     >

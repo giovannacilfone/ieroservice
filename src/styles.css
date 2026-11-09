@@ -90,12 +90,12 @@ h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.18;font-weight:600;max-width:8
 .center h2{margin-inline:auto}
 
 /* Cards */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px;perspective:1200px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
 .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);
-  transition:box-shadow .3s;transform-style:preserve-3d;display:flex;flex-direction:column}
+  transition:box-shadow .3s;display:flex;flex-direction:column}
 .card:hover{box-shadow:0 30px 60px -20px rgba(60,100,220,.35)}
-.ico{width:54px;height:54px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:1.5rem;box-shadow:0 10px 24px -8px var(--blue);transform:translateZ(30px)}
-.card h3{font-size:1.25rem;font-weight:600;margin:1.1rem 0 .4rem;transform:translateZ(20px)}
+.ico{width:54px;height:54px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:1.5rem;box-shadow:0 10px 24px -8px var(--blue)}
+.card h3{font-size:1.25rem;font-weight:600;margin:1.1rem 0 .4rem}
 .card > p{color:var(--muted);font-size:.9rem}
 .card ul{margin:1rem 0 1.4rem;display:grid;gap:.55rem;color:var(--muted);font-size:.9rem}
 .card li{display:flex;gap:.6rem;align-items:flex-start}
@@ -190,4 +190,25 @@ h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.18;font-weight:600;max-width:8
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
+}
+
+/* Selector propio: detalles extra (placeholder, opción vacía, textos largos) */
+.sel-btn.empty .sel-val{color:var(--muted)}
+.sel-list li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sel-list li.none{color:var(--muted)}
+.sel-list li.chosen svg{margin-left:auto}
+
+/* Pantallas táctiles: sin efectos "hover" pegados en las tarjetas */
+@media (hover:none){
+  .card:hover{box-shadow:var(--shadow)}
+  .card:hover li::before{background:transparent;border-color:#c7d2ea;color:var(--blue)}
+  .card:hover .more i{transform:none}
+}
+
+/* Relieve 3D de las tarjetas: solo en computadora con mouse (en iOS/Safari táctil desplaza los textos) */
+@media (hover:hover) and (min-width:761px){
+  .grid{perspective:1200px}
+  .card{transform-style:preserve-3d}
+  .ico{transform:translateZ(30px)}
+  .card h3{transform:translateZ(20px)}
 }

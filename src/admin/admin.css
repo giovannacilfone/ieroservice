@@ -1,0 +1,202 @@
+/* Panel de administración. Todo con prefijo adm- para no chocar con la web pública. */
+.adm, .adm-login, .adm-overlay{
+  --a-bg:#f4f7fd; --a-card:#fff; --a-line:#e6ebf5; --a-ink:#0b1020; --a-muted:#5b6478;
+  --a-blue:#4f86f7; --a-blue-d:#3b6fe0; --a-navy:#0f1a33; --a-red:#d64545;
+  font-family:'Poppins',system-ui,sans-serif; color:var(--a-ink);
+}
+.adm h1,.adm h2,.adm h3,.adm-login h1,.adm-overlay h3{max-width:none;margin:0;line-height:1.2;font-size:inherit;font-weight:600}
+.adm button,.adm input,.adm select,.adm textarea,.adm-login input,.adm-login button,.adm-overlay button,.adm-overlay input,.adm-overlay select,.adm-overlay textarea{font-family:inherit}
+
+/* ---------- Login ---------- */
+.adm-login{min-height:100svh;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(700px 500px at 80% 0,rgba(79,134,247,.45),transparent 60%),linear-gradient(135deg,#0a1226,#162a55)}
+.adm-login-card{width:min(400px,100%);background:#fff;border-radius:24px;padding:34px;display:grid;gap:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.adm-login-card h1{font-size:1.6rem;text-align:center}
+.adm-login-card h1 b{color:var(--a-blue)}
+.adm-login-card>p{text-align:center;color:var(--a-muted);margin:-8px 0 6px;font-size:.9rem}
+.adm-login-card code{background:#eef3ff;padding:.1rem .4rem;border-radius:6px;font-size:.8rem}
+
+/* ---------- Layout ---------- */
+.adm{display:grid;grid-template-columns:240px 1fr;min-height:100svh;background:var(--a-bg)}
+.adm-side{background:var(--a-navy);color:#fff;padding:24px 16px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100svh}
+.adm-brand{font-size:1.25rem;font-weight:500;padding:0 10px}
+.adm-brand b,.adm-top b{color:var(--a-blue);font-weight:700}
+.adm-side nav{display:grid;gap:4px}
+.adm-side nav button{all:unset;box-sizing:border-box;cursor:pointer;padding:.7rem .9rem;border-radius:12px;color:#c4cee6;font-size:.93rem;font-weight:500;transition:background .2s,color .2s}
+.adm-side nav button:hover{background:rgba(255,255,255,.07);color:#fff}
+.adm-side nav button.on{background:var(--a-blue);color:#fff}
+.adm-user{margin-top:auto;display:grid;gap:8px;padding:0 10px;font-size:.78rem;color:#9fb0d6;word-break:break-all}
+.adm-user button{all:unset;cursor:pointer;color:#fff;font-weight:500;font-size:.85rem}
+.adm-user button:hover{text-decoration:underline}
+.adm-main{min-width:0}
+.adm-top{display:none}
+.adm-content{padding:clamp(18px,3vw,36px);max-width:1200px}
+.adm-scrim{display:none}
+
+.adm-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.adm-head h1{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+
+/* ---------- Botones ---------- */
+.adm-btn{border:1.5px solid var(--a-line);background:#fff;color:var(--a-ink);padding:.7rem 1.2rem;border-radius:999px;font-weight:500;font-size:.9rem;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.adm-btn:hover{transform:translateY(-1px)}
+.adm-btn:disabled{opacity:.6;cursor:default;transform:none}
+.adm-btn.primary{background:var(--a-blue);border-color:var(--a-blue);color:#fff;box-shadow:0 10px 24px -12px var(--a-blue)}
+.adm-btn.primary:hover{background:var(--a-blue-d)}
+.adm-btn.danger{color:var(--a-red);border-color:#f1cccc;background:#fff}
+.adm-btn.full{width:100%}
+.adm-link{all:unset;cursor:pointer;color:var(--a-blue);font-size:.85rem;font-weight:500}
+.adm-link:hover{text-decoration:underline}
+
+/* ---------- Tarjetas y tablas ---------- */
+.adm-card{background:var(--a-card);border:1px solid var(--a-line);border-radius:20px;box-shadow:0 14px 34px -22px rgba(40,70,140,.3)}
+.adm-toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.adm-search{flex:1;min-width:200px;max-width:380px;padding:.7rem 1rem;border:1.5px solid var(--a-line);border-radius:999px;background:#fff;font-size:.9rem}
+.adm-search:focus,.adm-field input:focus,.adm-field select:focus,.adm-field textarea:focus{outline:0;border-color:var(--a-blue);box-shadow:0 0 0 4px rgba(79,134,247,.15)}
+.adm-tabs{display:flex;gap:4px;background:#e9eef9;padding:4px;border-radius:999px;margin-left:auto}
+.adm-tabs button{border:0;background:none;padding:.45rem 1rem;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--a-muted);transition:background .2s,color .2s,box-shadow .2s;cursor:pointer}
+.adm-tabs button.on{background:var(--a-blue);color:#fff;box-shadow:0 6px 14px -6px var(--a-blue)}
+.adm-tablewrap{overflow-x:auto}
+.adm-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.adm-table th{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.6px;color:var(--a-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--a-line);white-space:nowrap}
+.adm-table td{padding:14px 18px;border-bottom:1px solid #f0f3fa;vertical-align:middle}
+.adm-table tbody tr{cursor:pointer;transition:background .15s}
+.adm-table tbody tr:hover,.adm-table tbody tr:focus-visible{background:#f6f9ff;outline:0}
+.adm-table tbody tr:last-child td{border-bottom:0}
+.adm-empty{padding:30px 20px;text-align:center;color:var(--a-muted);font-size:.92rem}
+.adm-error{color:var(--a-red);font-size:.85rem;margin:0}
+
+.adm-badge{display:inline-block;padding:.2rem .65rem;border-radius:999px;font-size:.72rem;font-weight:500;white-space:nowrap}
+.adm-badge.gray{background:#eceff5;color:#5b6478}.adm-badge.blue{background:#e6eeff;color:#3b6fe0}
+.adm-badge.green{background:#e0f6ea;color:#1f8a4c}.adm-badge.amber{background:#fff1d6;color:#a86a00}
+
+/* ---------- Resumen ---------- */
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.adm-stat{all:unset;box-sizing:border-box;cursor:pointer;background:#fff;border:1px solid var(--a-line);border-radius:20px;padding:20px;display:grid;gap:4px;box-shadow:0 14px 34px -22px rgba(40,70,140,.3);transition:transform .2s}
+.adm-stat:hover{transform:translateY(-3px)}
+.adm-stat strong{font-size:2rem;font-weight:600;line-height:1.1}
+.adm-stat span{color:var(--a-muted);font-size:.85rem}
+.adm-cols{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.adm-card-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px}
+.adm-card-head h2{font-size:1.05rem}
+.adm-list{list-style:none;margin:0;padding:6px 10px 12px}
+.adm-list li{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 10px;border-bottom:1px solid #f0f3fa}
+.adm-list li:last-child{border-bottom:0}
+.adm-list strong{display:block;font-size:.92rem;font-weight:500}
+.adm-list small{color:var(--a-muted);font-size:.8rem}
+.adm-when{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;font-size:.8rem;color:var(--a-muted);text-align:right}
+
+/* ---------- Trabajos (galería) ---------- */
+.adm-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.adm-job{all:unset;box-sizing:border-box;cursor:pointer;background:#fff;border:1px solid var(--a-line);border-radius:20px;overflow:hidden;display:grid;box-shadow:0 14px 34px -22px rgba(40,70,140,.3);transition:transform .25s,box-shadow .25s}
+.adm-job:hover{transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(60,100,220,.4)}
+.adm-job-img{position:relative;aspect-ratio:4/3;background:#eef3ff;display:grid;place-items:center;color:var(--a-muted);font-size:.85rem}
+.adm-job-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.adm-job-img em{position:absolute;right:10px;bottom:10px;font-style:normal;background:rgba(10,18,38,.7);color:#fff;font-size:.72rem;padding:.2rem .6rem;border-radius:999px}
+.adm-job-body{padding:14px 16px;display:grid;gap:2px}
+.adm-job-body strong{font-weight:500;font-size:.95rem}
+.adm-job-body small{color:var(--a-muted);font-size:.8rem}
+
+/* ---------- Modal y formularios ---------- */
+.adm-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,18,38,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;overflow-y:auto}
+.adm-modal{background:#fff;width:min(700px,100%);max-height:calc(100svh - 32px);overflow-y:auto;border-radius:24px;padding:24px;box-shadow:0 40px 90px -20px rgba(0,0,0,.5)}
+.adm-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.adm-modal-head h3{font-size:1.2rem}
+.adm-x{border:0;background:#f0f3fa;width:34px;height:34px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;color:var(--a-muted)}
+.adm-x:hover{background:#e3e9f6}
+.adm-form{display:grid;gap:16px}
+.adm-fields{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.adm-fields .adm-field{grid-column:span 3}
+.adm-fields .adm-field.span-4{grid-column:span 4}
+.adm-fields .adm-field.span-2{grid-column:span 2}
+.adm-field{min-width:0;display:grid;gap:6px;font-size:.8rem;font-weight:500;color:var(--a-muted)}
+.adm-fields .adm-field.wide{grid-column:1/-1}
+.adm-field.check{grid-template-columns:auto 1fr;align-items:center;gap:10px}
+.adm-field.check input{width:18px;height:18px;accent-color:var(--a-blue)}
+.adm-field input:not([type=checkbox]),.adm-field select,.adm-field textarea{width:100%;font-size:.92rem;padding:.75rem .95rem;border:1.5px solid var(--a-line);border-radius:14px;background:#fafbff;color:var(--a-ink);transition:border .2s,box-shadow .2s}
+.adm-field textarea{resize:vertical}
+.adm-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:4px}
+.adm-actions .danger{margin-right:auto}
+
+.adm-photos{display:grid;gap:8px}
+.adm-photos-title{font-size:.8rem;font-weight:500;color:var(--a-muted)}
+.adm-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
+.adm-thumb{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#eef3ff}
+.adm-thumb img{width:100%;height:100%;object-fit:cover}
+.adm-thumb button{position:absolute;top:5px;right:5px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(10,18,38,.75);color:#fff;cursor:pointer;line-height:1}
+.adm-add{aspect-ratio:1;border:1.5px dashed #b9c8ea;border-radius:14px;display:grid;place-items:center;color:var(--a-blue);font-size:.82rem;font-weight:500;cursor:pointer;transition:background .2s}
+.adm-add:hover{background:#f2f6ff}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .adm{grid-template-columns:1fr}
+  .adm-side{position:fixed;left:0;top:0;bottom:0;width:260px;z-index:60;transform:translateX(-100%);transition:transform .3s}
+  .adm-side.open{transform:none}
+  .adm-scrim{display:block;position:fixed;inset:0;background:rgba(10,18,38,.45);z-index:50}
+  .adm-top{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--a-navy);color:#fff;position:sticky;top:0;z-index:40;font-weight:500}
+  .adm-burger{border:0;background:none;color:#fff;font-size:1.4rem;cursor:pointer}
+  .adm-stats{grid-template-columns:1fr 1fr}
+  .adm-cols{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .adm-fields{grid-template-columns:1fr}
+  .adm-fields .adm-field,.adm-fields .adm-field.span-4,.adm-fields .adm-field.span-2{grid-column:1/-1}
+  .adm-modal{padding:18px;border-radius:20px}
+  .adm-table th,.adm-table td{padding:12px}
+}
+
+/* ---------- Texto cortado + tooltip ---------- */
+.adm-trunc{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:default}
+.adm-tip{position:fixed;z-index:300;transform:translate(-50%,calc(-100% - 10px));max-width:320px;width:max-content;
+  padding:.65rem .9rem;border-radius:12px;background:#0f1a33;color:#fff;font:400 .8rem/1.5 'Poppins',system-ui,sans-serif;
+  white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 18px 40px -12px rgba(10,18,38,.55);pointer-events:none;animation:adm-tip .15s ease-out}
+.adm-tip::after{content:"";position:absolute;left:calc(50% + var(--ax,0px));bottom:-5px;width:10px;height:10px;background:#0f1a33;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.adm-tip.below{transform:translate(-50%,10px)}
+.adm-tip.below::after{bottom:auto;top:-5px}
+@keyframes adm-tip{from{opacity:0}to{opacity:1}}
+
+/* ---------- Teléfono + botón WhatsApp ---------- */
+.adm-phone{display:inline-flex;align-items:center;gap:.55rem;white-space:nowrap}
+.adm-wa-wrap{display:inline-flex}
+.adm-wa{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#e3f8ec;color:#1faa57;transition:background .2s,color .2s,transform .2s}
+.adm-wa:hover{background:#25d366;color:#fff;transform:scale(1.1)}
+
+/* Columna de acciones (ícono de WhatsApp): angosta y a la derecha */
+.adm-table .adm-actioncell{width:1%;white-space:nowrap;text-align:center;cursor:default}
+
+/* ---------- Diálogo de confirmación ---------- */
+.adm-overlay.top{z-index:200;background:rgba(10,18,38,.6)}
+.adm-confirm{background:#fff;width:min(400px,100%);border-radius:24px;padding:28px 26px 22px;text-align:center;box-shadow:0 40px 90px -20px rgba(0,0,0,.55)}
+.adm-confirm-ico{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:#fdecec;color:var(--a-red)}
+.adm-confirm h3{font-size:1.15rem;margin-bottom:6px}
+.adm-confirm p{margin:0 0 22px;color:var(--a-muted);font-size:.9rem;line-height:1.5}
+.adm-confirm-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.adm-btn.solid-danger{background:var(--a-red);border-color:var(--a-red);color:#fff;box-shadow:0 10px 24px -12px var(--a-red)}
+.adm-btn.solid-danger:hover{background:#bf3535}
+.adm-btn:focus-visible{outline:3px solid rgba(79,134,247,.4);outline-offset:2px}
+.adm-job-money{margin-top:4px}.adm-job-money b{color:#1f8a4c;font-weight:500}
+
+/* ---------- Selector de fecha (el calendario se dibuja en <body>: colores fijos) ---------- */
+.dp-pop{z-index:380;box-sizing:border-box;overflow-y:auto;background:#fff;border:1px solid #e6ebf5;border-radius:20px;padding:14px;color:#0b1020;
+  font-family:'Poppins',system-ui,sans-serif;box-shadow:0 28px 60px -18px rgba(20,40,100,.4)}
+.dp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.dp-head strong{font-size:.95rem;font-weight:600}
+.dp-nav{width:34px;height:34px;border:0;border-radius:50%;background:#f0f4fd;color:#4f86f7;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.dp-nav:hover{background:#e0eaff}
+.dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dp-dow span{text-align:center;font-size:.68rem;font-weight:500;letter-spacing:.4px;color:#8a93a8;padding:.35rem 0}
+.dp-grid button{aspect-ratio:1;border:0;border-radius:12px;background:none;font:inherit;font-size:.85rem;color:#0b1020;cursor:pointer;transition:background .15s}
+.dp-grid button:hover{background:#eef3ff}
+.dp-grid button.out{color:#b7bfd0}
+.dp-grid button.today{box-shadow:inset 0 0 0 1.5px #4f86f7;color:#3b6fe0;font-weight:500}
+.dp-grid button.on{background:#4f86f7;color:#fff;font-weight:600;box-shadow:0 8px 16px -8px #4f86f7}
+.dp-time{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #e6ebf5}
+.dp-time>span{font-size:.8rem;font-weight:500;color:#5b6478;margin-right:auto}
+.dp-time .sel{width:78px}
+.dp-time b{color:#8a93a8}
+.dp-time .sel-btn{padding:.55rem .75rem;font-size:.88rem;border-radius:12px}
+.dp-foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px;min-height:34px}
+.dp-foot button{border:0;background:none;font:inherit;font-size:.85rem;font-weight:500;color:#4f86f7;padding:.4rem .6rem;border-radius:10px;cursor:pointer}
+.dp-foot button:hover{background:#eef3ff}
+.dp-foot .dp-ok{background:#4f86f7;color:#fff;padding:.5rem 1.2rem;border-radius:999px}
+.dp-foot .dp-ok:hover{background:#3b6fe0}
+.adm-badge::first-letter{text-transform:uppercase}
