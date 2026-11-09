@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+  <defs>
+    <g id="fridge"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M6 10h12M9 6v1.5M9 13v3"/></g>
+    <g id="washer"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M3 7h18M7 4.5h.01M10 4.5h2"/><circle cx="12" cy="14.5" r="4.5"/></g>
+    <g id="micro"><rect x="2" y="5" width="20" height="14" rx="2"/><rect x="5" y="8" width="10" height="8" rx="1"/><path d="M18.5 9h.01M18.5 12h.01M18.5 15h.01"/></g>
+    <g id="stove"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M3 8h18M7 5h.01M12 5h.01M17 5h.01"/><rect x="6" y="11" width="12" height="8" rx="1.5"/></g>
+    <g id="ac"><rect x="2" y="4" width="20" height="8" rx="2"/><path d="M6 9h12M7 15v3M12 15v5M17 15v3"/></g>
+    <g id="iron"><path d="M3 19h18M5 19c0-4 2-8 7-8h5c2 0 3 3 3 8M9 15h6"/></g>
+    <g id="blender"><path d="M7 3h10l-1.5 11h-7zM6.5 3h11"/><rect x="7" y="16" width="10" height="5" rx="1.5"/><path d="M12 18.5h.01"/></g>
+    <g id="toaster"><rect x="3" y="9" width="18" height="10" rx="3"/><path d="M8 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M7 14h10M18 16.5h.01"/></g>
+    <g id="tv"><rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></g>
+    <g id="heater"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M9 8h6"/><circle cx="12" cy="14" r="2"/></g>
+    <g id="wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g>
+    <g id="bulb"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></g>
+    <g id="bolt"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></g>
+  </defs>
+
+  <!-- Íconos: repartidos de forma irregular, rotados y de distintos tamaños. Dentro de márgenes para que el mosaico encaje sin cortes. -->
+  <g fill="none" stroke="#3b6fe0" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity=".17">
+    <use href="#fridge"  transform="translate(52 48) rotate(-12) scale(1.5) translate(-12 -12)"/>
+    <use href="#wrench"  transform="translate(168 40) rotate(25) scale(1.4) translate(-12 -12)"/>
+    <use href="#tv"      transform="translate(250 66) rotate(8) scale(1.5) translate(-12 -12)"/>
+    <use href="#bulb"    transform="translate(366 44) rotate(-20) scale(1.4) translate(-12 -12)"/>
+    <use href="#iron"    transform="translate(96 150) rotate(15) scale(1.5) translate(-12 -12)"/>
+    <use href="#washer"  transform="translate(190 138) rotate(-8) scale(1.6) translate(-12 -12)"/>
+    <use href="#bolt"    transform="translate(298 170) rotate(18) scale(1.3) translate(-12 -12)"/>
+    <use href="#micro"   transform="translate(372 128) rotate(10) scale(1.4) translate(-12 -12)"/>
+    <use href="#blender" transform="translate(40 250) rotate(-15) scale(1.5) translate(-12 -12)"/>
+    <use href="#ac"      transform="translate(150 262) rotate(6) scale(1.6) translate(-12 -12)"/>
+    <use href="#stove"   transform="translate(256 236) rotate(-10) scale(1.5) translate(-12 -12)"/>
+    <use href="#toaster" transform="translate(362 268) rotate(20) scale(1.5) translate(-12 -12)"/>
+    <use href="#heater"  transform="translate(80 364) rotate(12) scale(1.5) translate(-12 -12)"/>
+    <use href="#wrench"  transform="translate(200 372) rotate(-30) scale(1.3) translate(-12 -12)"/>
+    <use href="#blender" transform="translate(310 370) rotate(8) scale(1.4) translate(-12 -12)"/>
+    <use href="#washer"  transform="translate(374 366) rotate(-14) scale(1.3) translate(-12 -12)"/>
+  </g>
+
+  <!-- Detalles chicos entre los íconos -->
+  <g fill="none" stroke="#3b6fe0" stroke-width="1.2" stroke-linecap="round" opacity=".13">
+    <circle cx="118" cy="92" r="2.5"/><circle cx="318" cy="96" r="2"/><circle cx="14" cy="170" r="2"/>
+    <circle cx="238" cy="322" r="2.5"/><circle cx="130" cy="330" r="2"/><circle cx="404" cy="204" r="2"/>
+    <path d="M222 14h8M226 10v8"/><path d="M12 108h8M16 104v8"/><path d="M332 306h8M336 302v8"/>
+    <path d="M142 204h8M146 200v8"/><path d="M398 330h8M402 326v8"/><path d="M20 316h8M24 312v8"/>
+  </g>
+</svg>

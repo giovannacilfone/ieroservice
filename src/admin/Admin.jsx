@@ -5,6 +5,7 @@ import Login from "./Login.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Resource from "./Resource.jsx";
 import Jobs from "./Jobs.jsx";
+import Card from "./Card.jsx";
 import { CLIENTS, PROVIDERS, VISITS, NOTES } from "./schema.jsx";
 
 const TABS = [
@@ -14,13 +15,13 @@ const TABS = [
   ["trabajos", "Trabajos"],
   ["proveedores", "Proveedores"],
   ["notas", "Notas"],
+  ["tarjeta", "Tarjeta"],
 ];
 
 export default function Admin() {
   const [session, setSession] = useState(undefined);
   const [tab, setTab] = useState(() => window.location.hash.slice(1) || "resumen");
   const [menu, setMenu] = useState(false);
-
   // El panel no debe indexarse en buscadores
   useEffect(() => {
     document.title = "Panel · Iero Service";
@@ -59,6 +60,7 @@ export default function Admin() {
     trabajos: <Jobs />,
     proveedores: <Resource {...PROVIDERS} />,
     notas: <Resource {...NOTES} />,
+    tarjeta: <Card />,
   };
 
   return (
