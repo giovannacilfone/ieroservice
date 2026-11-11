@@ -100,7 +100,7 @@ function drawFront(ctx, { pattern }) {
   ctx.fillStyle = "#fff"; ctx.font = `600 34px ${FONT}`;
   spaced(ctx, "REPARAMOS", px + 60, py + 85, 12);
   ctx.fillStyle = BLUE; ctx.fillRect(px + 60, py + 112, 90, 6);
-  ["Heladeras", "Lavarropas", "Microondas", "Hornos", "Y mucho más"].forEach((t, i) => {
+  ["Televisores", "Lavarropas", "Microondas", "Hornos", "Y mucho más"].forEach((t, i) => {
     const y = py + 190 + i * 80, more = i === 4;
     ctx.fillStyle = more ? "rgba(143,178,255,.25)" : "rgba(79,134,247,.35)"; ctx.beginPath(); ctx.arc(px + 80, y - 14, 24, 0, Math.PI * 2); ctx.fill();
     ctx.strokeStyle = "#fff"; ctx.lineWidth = 6; ctx.lineCap = "round"; ctx.lineJoin = "round";
