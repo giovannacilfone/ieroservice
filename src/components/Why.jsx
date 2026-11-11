@@ -37,7 +37,7 @@ function Chip({ cls, icon, title, sub, delay, f }) {
 function Panel() {
   const [photo, setPhoto] = useState(true);
   return (
-    <motion.div className="why-panel" {...reveal()}>
+    <motion.div className={`why-panel${photo ? " has-photo" : ""}`} {...reveal()}>
       {photo ? (
         <img
           className="why-photo"
@@ -54,11 +54,11 @@ function Panel() {
               <span>años de experiencia</span>
             </motion.div>
           </motion.div>
+          <Chip cls="w1" icon="✅" title="Consulta sin cargo" sub="Revisión sin compromiso" delay={0.3} f={[8, 5]} />
+          <Chip cls="w2" icon="🛠️" title="Todas las marcas" sub="Nuevos y viejos modelos" delay={0.5} f={[10, 6, 0.8]} />
+          <Chip cls="w3" icon="⚡" title="Respuesta rápida" sub="Por WhatsApp" delay={0.7} f={[8, 5.5, 1.5]} />
         </>
       )}
-      <Chip cls="w1" icon="✅" title="Consulta sin cargo" sub="Revisión sin compromiso" delay={0.3} f={[8, 5]} />
-      <Chip cls="w2" icon="🛠️" title="Todas las marcas" sub="Nuevos y viejos modelos" delay={0.5} f={[10, 6, 0.8]} />
-      <Chip cls="w3" icon="⚡" title="Respuesta rápida" sub="Por WhatsApp" delay={0.7} f={[8, 5.5, 1.5]} />
     </motion.div>
   );
 }
